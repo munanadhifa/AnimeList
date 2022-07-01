@@ -1,24 +1,19 @@
-import React, { Component } from 'react';
-import { HashRouter as Router, Route, Switch} from 'react-router-dom'
-import PokemonList from './Pokemonlist';
-import Pokedetail from './Pokedetail';
-import Mypoke from './Mypoke';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import AnimeList from "./animeList";
+import AnimeDetail from "./AnimeDetail";
+import Appbar from "./Appbar";
 
- 
-class App extends Component {
-  render() {
-    return (
-      <Router>
+function App() {
+  return (
+    <Router>
+      <Appbar />
       <Switch>
-        <Route exact path="/" component={PokemonList}/>
-        <Route exact path="/pokemon/:pokemonID" component={Pokedetail} />
-        <Route exact path="/Mypokemon" component={Mypoke}/>
-      
+        <Route path="/" exact component={AnimeList} />
+        <Route path="/animes/:id" children={<AnimeDetail />} />
       </Switch>
-      </Router>
-
-    )
-  }
+    </Router>
+  );
 }
 
-export default App
+export default App;
